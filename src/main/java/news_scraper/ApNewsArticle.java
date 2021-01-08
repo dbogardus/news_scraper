@@ -104,7 +104,7 @@ class ApNewsArticle {
 
             imageLinks.addAll(findAllImagesLinksOnPage(driver));
 
-            //Cycle through the images in the model, but limit the number of images we'll grab to prevent infinite loop
+            //Cycle through the images in the modal, but limit the number of images we'll grab to prevent infinite loop
             imageAdvanceArrowBy = By.cssSelector("svg[class*='right-']"); // Arrow changes after entering image modal
             int currentImageCylceClicks = 0;
             int maxImageCycleClicks = 100;
