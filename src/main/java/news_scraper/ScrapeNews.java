@@ -17,8 +17,8 @@ public class ScrapeNews {
 
         //Using a google api to search the site
         //This allows us to avoid navigation on the site which will be slow and flaky
-        //This is a specific design choice to avoid any browser navigation not necessary
-        GoogleSearchResults googleSearchResults = rapidAPIGoogleSearch("apnews.com/article", "medical", 2);
+        //This is a specific design choice to avoid any unnecessary browser navigation
+        GoogleSearchResults googleSearchResults = rapidAPIGoogleSearch("apnews.com/article", "medical", 20);
 
         List<ApNewsArticle> articles = new ArrayList<>();
 
@@ -31,6 +31,7 @@ public class ScrapeNews {
 
 
     private static String buildHtmlReport(List<ApNewsArticle> articles) {
+
         StringBuffer htmlOutputOfResults = new StringBuffer();
 
         htmlOutputOfResults.append("<html><body><table border=\"1\"><th>Headline</th><th>Author(s)</th><th>Date</th><th>Link</th><th>Images</th>");
@@ -46,7 +47,6 @@ public class ScrapeNews {
 
     private static GoogleSearchResults rapidAPIGoogleSearch(String siteToScrape,
                                                             String searchTerm, int numberOfResultsToPull) {
-
         final String host = "https://rapidapi.p.rapidapi.com/api/v1/search/";
         final String charset = "UTF-8";
         final String x_rapidapi_host = "google-search3.p.rapidapi.com";
